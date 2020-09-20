@@ -1,0 +1,18 @@
+version: "3.8" 
+
+services: 
+  mysql: 
+    image: mysql:8.0
+    #privileged: true
+    restart: always
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'db'
+#      MYSQL_USER: 'user'
+#      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'choichoi'
+    user: '0:0' #'501:20' #${CURRENT_UID} CURRENT_UID=$(id -u):$(id -g) docker-compose up 
+    volumes: 
+       - /Volumes/db/mysql:/var/lib/mysql
